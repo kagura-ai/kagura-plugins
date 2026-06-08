@@ -95,9 +95,3 @@ then, JFK-maintained is the supported state.
 | kagura-planner | Tool | ✅ live (`kagura-ai/kagura-planner`) |
 
 All seven plugins install today.
-
-### Keeping this in sync
-
-All seven plugins are live. When a deferred migration eventually runs, update the affected
-`marketplace.json` entry's `source`/`name` and refresh the table here. See
-[`TRACKING.md`](TRACKING.md) for the rollout map and the deferred-migration steps.
