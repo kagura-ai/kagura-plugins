@@ -74,8 +74,9 @@ works regardless of which org hosts the source, so these install today exactly l
 **Migration to kagura-ai is deferred, not cancelled.** It is treated as two independent steps:
 
 1. **Ownership move** (JFK → kagura-ai org) — cheap, reversible.
-2. **Prefix rename** (`claude-c-suite → kagura-c-suite`, `claude-phd-panel → kagura-phd-panel`)
-   — a breaking namespace change plus a config-path migration, and the expensive part.
+2. **Prefix rename** — *if/when* the move happens, the `claude-*` tools would be renamed into
+   the `kagura-*` namespace. A breaking namespace change plus a config-path migration — the
+   expensive part, and the reason it stays deferred.
 
 Both deliver brand coherence but **zero user-facing functionality**, so they are gated on an
 external trigger (public launch / external contributors), not a self-imposed deadline. Until
