@@ -106,7 +106,3 @@ When a 🚧 plugin's `kagura-ai` repo lands, run the go-live checklist in
 [`TRACKING.md`](TRACKING.md): verify `/plugin install <name>@kagura-plugins`, then flip the
 row here and in `TRACKING.md` to ✅ and commit. No `marketplace.json` change is needed — its
 entries already point at the final `kagura-ai` repos.
-
-## Design
-
-See [`docs/superpowers/specs/2026-06-08-kagura-plugins-design.md`](docs/superpowers/specs/2026-06-08-kagura-plugins-design.md).
