@@ -69,12 +69,38 @@ Tier-2 Harness if it later drives multi-stage plan→engineer orchestration.
 | `kagura-code-reviewer` | kagura-ai · plugin ✅ | Tier 1 | none | **reference** |
 | `kagura-planner` | kagura-ai · CLI, **no skill** | Tier 1 | add thin skill-plugin **in its own repo** | reference |
 | `kagura-engineer` | kagura-ai · CLI, **no skill** | Tier 2 | add thin skill-plugin **in its own repo** | reference |
-| `claude-c-suite` | **JFK** personal | Tier 1 | **migrate** → kagura-ai, then JFK archive | reference |
-| `gh-issue-driven` | **JFK** personal | Tier 2 | **migrate** → kagura-ai, then JFK archive | reference |
-| `claude-phd-panel` | **JFK** personal | Tier 1 | **migrate** → kagura-ai, then JFK archive | reference |
+| `claude-c-suite` | **JFK** personal | Tier 1 | **migrate + rename → `kagura-c-suite`**, then JFK archive | reference |
+| `gh-issue-driven` | **JFK** personal | Tier 2 | **migrate** (name kept) → kagura-ai, then JFK archive | reference |
+| `claude-phd-panel` | **JFK** personal | Tier 1 | **migrate + rename → `kagura-phd-panel`**, then JFK archive | reference |
 
 **Out of scope** (not core to the memory-cloud ecosystem; revisit later):
 `expert-craft`, `claude-statusline-builder`, `claude-harness-loop`.
+
+### 4.1 Plugin naming / namespace policy
+
+**Invocation namespace is `<plugin-name>:<command>`, not `<marketplace>:<plugin>`.** The
+marketplace name (`kagura-plugins`) never appears at call time. Evidence: marketplace
+`kagura-memory-cloud` ships plugin `kagura-memory`, invoked as `/kagura-memory:recall` — the
+marketplace name is invisible. So there is **no "kagura" doubling**; `kagura-` appears once,
+in the plugin name.
+
+Given that, the brand is unified at the **plugin-name prefix** (the user-facing namespace),
+**rename done now as part of migration** (cheapest moment — the metadata/repo is already
+being rewritten; deferring means paying the same churn plus a second breaking change later):
+
+| Old plugin | New plugin / namespace | Config path |
+|---|---|---|
+| `claude-c-suite` | **`kagura-c-suite`** (`/kagura-c-suite:ceo`) | `~/.claude/kagura-c-suite.json` (fall back to old) |
+| `claude-phd-panel` | **`kagura-phd-panel`** (`/kagura-phd-panel:cs`) | `~/.claude/kagura-phd-panel.json` (fall back to old) |
+| `gh-issue-driven` | unchanged (`gh` = GitHub, functional not brand noise) | — |
+| `kagura-*` (memory/code-reviewer/planner/engineer) | unchanged (already on-brand) | — |
+
+Rename mechanics (measured blast radius): claude-c-suite ≈ **229 refs / 30 files**,
+claude-phd-panel ≈ **66 refs / 15 files**. The bulk is mechanical (`/claude-…:…`
+cross-references, README, docs, CHANGELOG) → a single scripted `sed` sweep in the migration
+commit. The one non-mechanical piece is the **config-file path** (user state): the migrated
+plugin reads the new `~/.claude/kagura-*.json` and **falls back to the old `claude-*.json`**
+for backward compatibility.
 
 ## 5. Canonical-source policy (JFK → kagura-ai)
 
@@ -159,11 +185,16 @@ all of it.
 - **Tool / Harness 2-tier taxonomy + kagura-memory substrate**, surfaced via README + marketplace metadata.
 - **kagura-memory (Memory Cloud) is featured**, not treated as a passive backend.
 - Rebrand includes **`author email → dev@kagura-ai.com`**.
+- **Prefix unified now (hybrid):** `claude-c-suite → kagura-c-suite`,
+  `claude-phd-panel → kagura-phd-panel`; `gh-issue-driven` kept. Invocation namespace is
+  `<plugin>:<command>` (marketplace name never appears), so no "kagura" doubling. Config
+  paths migrate to `~/.claude/kagura-*.json` with fallback to the old `claude-*.json`.
 
 ## 11. Open questions
 
 - Exact `marketplace.json` schema for referencing external repos + the precise field used
   for the `tool`/`harness`/`substrate` category tag (confirm against current Claude Code
   marketplace spec during build).
-- Final naming of migrated repos (`kagura-ai/claude-c-suite` vs keeping any `-plugin`
-  suffix) — current ecosystem convention (e.g. `kagura-code-reviewer`) suggests no suffix.
+- Migrated repo names follow the plugin names with no `-plugin` suffix
+  (`kagura-ai/kagura-c-suite`, `kagura-ai/kagura-phd-panel`, `kagura-ai/gh-issue-driven`),
+  matching the existing `kagura-code-reviewer` convention. (Confirm at create time.)
