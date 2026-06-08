@@ -1,0 +1,78 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "kagura-plugins",
+  "description": "Umbrella marketplace for the Kagura Memory Cloud ecosystem — the kagura-memory substrate, atomic review Tools, and orchestration Harnesses, unified under the kagura-ai brand. Reference-don't-vendor: each plugin lives in its own kagura-ai repo.",
+  "owner": {
+    "name": "Kagura AI, Inc.",
+    "email": "dev@kagura-ai.com",
+    "url": "https://github.com/kagura-ai"
+  },
+  "metadata": {
+    "description": "One entry point for the Kagura ecosystem. Tiers: substrate (memory), tool (atomic, cheap, safe), harness (multi-phase, stateful, costly — creates PRs / HITL gates)."
+  },
+  "plugins": [
+    {
+      "name": "kagura-memory",
+      "source": { "source": "github", "repo": "kagura-ai/memory-cloud" },
+      "description": "Substrate · Memory Cloud. Persistent AI memory grounding the whole ecosystem — session-start/session-summary bracket every session; recall/remember/guide used throughout.",
+      "category": "productivity",
+      "keywords": ["kagura", "substrate", "memory"],
+      "homepage": "https://github.com/kagura-ai/memory-cloud",
+      "repository": "https://github.com/kagura-ai/memory-cloud"
+    },
+    {
+      "name": "kagura-code-reviewer",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-code-reviewer" },
+      "description": "Tool · Cost-free, Ollama-first code review — multi-angle finders, adversarial verify, structured verdict.",
+      "category": "code-quality",
+      "keywords": ["kagura", "tool", "code-review"],
+      "homepage": "https://github.com/kagura-ai/kagura-code-reviewer",
+      "repository": "https://github.com/kagura-ai/kagura-code-reviewer"
+    },
+    {
+      "name": "kagura-planner",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-planner" },
+      "description": "Tool · Memory-grounded PLAN-layer over Claude Code + Kagura Memory. Thin skill wrapping the kagura-planner CLI (plan / doctor).",
+      "category": "productivity",
+      "keywords": ["kagura", "tool", "planning"],
+      "homepage": "https://github.com/kagura-ai/kagura-planner",
+      "repository": "https://github.com/kagura-ai/kagura-planner"
+    },
+    {
+      "name": "kagura-engineer",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-engineer" },
+      "description": "Harness · Autonomous coding loop over Claude Code + Kagura Memory (run / review / goal). Stateful, resumable, creates PRs, HITL gates — not an atomic tool.",
+      "category": "productivity",
+      "keywords": ["kagura", "harness", "autonomous", "pr", "hitl"],
+      "homepage": "https://github.com/kagura-ai/kagura-engineer",
+      "repository": "https://github.com/kagura-ai/kagura-engineer"
+    },
+    {
+      "name": "kagura-c-suite",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-c-suite" },
+      "description": "Tool · Executive-team review lenses (CEO/CTO/CSO/CFO/PM/QA-Lead/DX-Lead/…) for any codebase. Single-lens /ask router plus per-role commands.",
+      "category": "code-quality",
+      "keywords": ["kagura", "tool", "review", "c-suite"],
+      "homepage": "https://github.com/kagura-ai/kagura-c-suite",
+      "repository": "https://github.com/kagura-ai/kagura-c-suite"
+    },
+    {
+      "name": "kagura-phd-panel",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-phd-panel" },
+      "description": "Tool · PhD-level review panel (CS / DB / Distributed-Systems / Data-Science / PL / Security / Statistics) for deep technical critique.",
+      "category": "code-quality",
+      "keywords": ["kagura", "tool", "review", "phd-panel"],
+      "homepage": "https://github.com/kagura-ai/kagura-phd-panel",
+      "repository": "https://github.com/kagura-ai/kagura-phd-panel"
+    },
+    {
+      "name": "gh-issue-driven",
+      "source": { "source": "github", "repo": "kagura-ai/gh-issue-driven" },
+      "description": "Harness · Drives GitHub issues to PRs (start → implement → ship → review) with gates, resumable state, and HITL. Costly, mutates the repo, opens PRs — not an atomic tool.",
+      "category": "productivity",
+      "keywords": ["kagura", "harness", "github", "issue", "pr", "hitl"],
+      "homepage": "https://github.com/kagura-ai/gh-issue-driven",
+      "repository": "https://github.com/kagura-ai/gh-issue-driven"
+    }
+  ]
+}
