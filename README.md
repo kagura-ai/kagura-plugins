@@ -80,10 +80,7 @@ works regardless of which org hosts the source, so these install today exactly l
 
 Both deliver brand coherence but **zero user-facing functionality**, so they are gated on an
 external trigger (public launch / external contributors), not a self-imposed deadline. Until
-then, JFK-maintained is the supported state. Tracked in
-[JFK/claude-c-suite-plugin#3](https://github.com/JFK/claude-c-suite-plugin/issues/3),
-[JFK/claude-phd-panel-plugin#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5),
-[JFK/gh-issue-driven#85](https://github.com/JFK/gh-issue-driven/issues/85).
+then, JFK-maintained is the supported state.
 
 ## Rollout status
 
@@ -91,17 +88,16 @@ then, JFK-maintained is the supported state. Tracked in
 |---|---|---|
 | kagura-memory | Substrate | ✅ live (`kagura-ai/memory-cloud`) |
 | kagura-code-reviewer | Tool | ✅ live (`kagura-ai/kagura-code-reviewer`) |
-| kagura-engineer | Harness | ✅ live (`kagura-ai/kagura-engineer`) — [#28](https://github.com/kagura-ai/kagura-engineer/issues/28) merged |
-| claude-c-suite | Tool | ✅ live (`JFK/claude-c-suite-plugin`) — migration deferred ([#3](https://github.com/JFK/claude-c-suite-plugin/issues/3)) |
-| claude-phd-panel | Tool | ✅ live (`JFK/claude-phd-panel-plugin`) — migration deferred ([#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5)) |
-| gh-issue-driven | Harness | ✅ live (`JFK/gh-issue-driven`) — migration deferred ([#85](https://github.com/JFK/gh-issue-driven/issues/85)) |
+| kagura-engineer | Harness | ✅ live (`kagura-ai/kagura-engineer`) |
+| claude-c-suite | Tool | ✅ live (`JFK/claude-c-suite-plugin`) — migration deferred |
+| claude-phd-panel | Tool | ✅ live (`JFK/claude-phd-panel-plugin`) — migration deferred |
+| gh-issue-driven | Harness | ✅ live (`JFK/gh-issue-driven`) — migration deferred |
 | kagura-planner | Tool | ✅ live (`kagura-ai/kagura-planner`) |
 
 All seven plugins install today.
 
 ### Keeping this in sync
 
-When a 🚧 plugin's `kagura-ai` repo lands, run the go-live checklist in
-[`TRACKING.md`](TRACKING.md): verify `/plugin install <name>@kagura-plugins`, then flip the
-row here and in `TRACKING.md` to ✅ and commit. No `marketplace.json` change is needed — its
-entries already point at the final `kagura-ai` repos.
+All seven plugins are live. When a deferred migration eventually runs, update the affected
+`marketplace.json` entry's `source`/`name` and refresh the table here. See
+[`TRACKING.md`](TRACKING.md) for the rollout map and the deferred-migration steps.
