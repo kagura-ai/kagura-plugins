@@ -95,10 +95,9 @@ then, JFK-maintained is the supported state. Tracked in
 | claude-c-suite | Tool | ✅ live (`JFK/claude-c-suite-plugin`) — migration deferred ([#3](https://github.com/JFK/claude-c-suite-plugin/issues/3)) |
 | claude-phd-panel | Tool | ✅ live (`JFK/claude-phd-panel-plugin`) — migration deferred ([#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5)) |
 | gh-issue-driven | Harness | ✅ live (`JFK/gh-issue-driven`) — migration deferred ([#85](https://github.com/JFK/gh-issue-driven/issues/85)) |
-| kagura-planner | Tool | 🚧 plugin in preparation in `kagura-ai/kagura-planner` (separate session) |
+| kagura-planner | Tool | ✅ live (`kagura-ai/kagura-planner`) |
 
-Only `kagura-planner` is 🚧 — its entry references the kagura-ai repo and installs once that
-repo's plugin lands. Everything else installs today.
+All seven plugins install today.
 
 ### Keeping this in sync
 

@@ -13,8 +13,7 @@ only tracks **dependency order** and the **go-live checklist** for the marketpla
 
 ## Current state
 
-Everything installs now except `kagura-planner` (plugin still in preparation in a separate
-session). No action is required to keep the marketplace working.
+**All seven plugins install today.** No action is required to keep the marketplace working.
 
 ## Per-plugin status
 
@@ -23,17 +22,10 @@ session). No action is required to keep the marketplace working.
 | kagura-memory | substrate | kagura-ai/memory-cloud | — | ✅ live |
 | kagura-code-reviewer | tool | kagura-ai/kagura-code-reviewer | — | ✅ live |
 | kagura-engineer | harness | kagura-ai/kagura-engineer | #28 | ✅ live (PR #30 merged) |
+| kagura-planner | tool | kagura-ai/kagura-planner | (planner session) | ✅ live |
 | claude-c-suite | tool | JFK/claude-c-suite-plugin | #3 | ✅ live · migration deferred |
 | claude-phd-panel | tool | JFK/claude-phd-panel-plugin | #5 | ✅ live · migration deferred |
 | gh-issue-driven | harness | JFK/gh-issue-driven | #85 | ✅ live · migration deferred |
-| kagura-planner | tool | kagura-ai/kagura-planner | (planner session) | 🚧 pending |
-
-## Go-live checklist for `kagura-planner` (when its plugin lands)
-
-- [ ] `/plugin install kagura-planner@kagura-plugins` succeeds in a clean Claude Code session
-- [ ] The namespace resolves (`/kagura-planner:plan`)
-- [ ] Flip this file's status and the `README.md` rollout row 🚧 → ✅
-- [ ] Commit: `docs: kagura-planner live in kagura-plugins`
 
 ## When the migration trigger fires (deferred)
 
