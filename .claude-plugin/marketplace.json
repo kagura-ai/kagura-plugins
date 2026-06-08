@@ -48,31 +48,31 @@
       "repository": "https://github.com/kagura-ai/kagura-engineer"
     },
     {
-      "name": "kagura-c-suite",
-      "source": { "source": "github", "repo": "kagura-ai/kagura-c-suite" },
-      "description": "Tool · Executive-team review lenses (CEO/CTO/CSO/CFO/PM/QA-Lead/DX-Lead/…) for any codebase. Single-lens /ask router plus per-role commands.",
+      "name": "claude-c-suite",
+      "source": { "source": "github", "repo": "JFK/claude-c-suite-plugin" },
+      "description": "Tool · Executive-team review lenses (CEO/CTO/CSO/CFO/PM/QA-Lead/DX-Lead/…) for any codebase. Single-lens /ask router plus per-role commands. (JFK-maintained; kagura-ai migration deferred.)",
       "category": "code-quality",
       "keywords": ["kagura", "tool", "review", "c-suite"],
-      "homepage": "https://github.com/kagura-ai/kagura-c-suite",
-      "repository": "https://github.com/kagura-ai/kagura-c-suite"
+      "homepage": "https://github.com/JFK/claude-c-suite-plugin",
+      "repository": "https://github.com/JFK/claude-c-suite-plugin"
     },
     {
-      "name": "kagura-phd-panel",
-      "source": { "source": "github", "repo": "kagura-ai/kagura-phd-panel" },
-      "description": "Tool · PhD-level review panel (CS / DB / Distributed-Systems / Data-Science / PL / Security / Statistics) for deep technical critique.",
+      "name": "claude-phd-panel",
+      "source": { "source": "github", "repo": "JFK/claude-phd-panel-plugin" },
+      "description": "Tool · PhD-level review panel (CS / DB / Distributed-Systems / Data-Science / PL / Security / Statistics) for deep technical critique. (JFK-maintained; kagura-ai migration deferred.)",
       "category": "code-quality",
       "keywords": ["kagura", "tool", "review", "phd-panel"],
-      "homepage": "https://github.com/kagura-ai/kagura-phd-panel",
-      "repository": "https://github.com/kagura-ai/kagura-phd-panel"
+      "homepage": "https://github.com/JFK/claude-phd-panel-plugin",
+      "repository": "https://github.com/JFK/claude-phd-panel-plugin"
     },
     {
       "name": "gh-issue-driven",
-      "source": { "source": "github", "repo": "kagura-ai/gh-issue-driven" },
-      "description": "Harness · Drives GitHub issues to PRs (start → implement → ship → review) with gates, resumable state, and HITL. Costly, mutates the repo, opens PRs — not an atomic tool.",
+      "source": { "source": "github", "repo": "JFK/gh-issue-driven" },
+      "description": "Harness · Drives GitHub issues to PRs (start → implement → ship → review) with gates, resumable state, and HITL. Costly, mutates the repo, opens PRs — not an atomic tool. (JFK-maintained; kagura-ai migration deferred.)",
       "category": "productivity",
       "keywords": ["kagura", "harness", "github", "issue", "pr", "hitl"],
-      "homepage": "https://github.com/kagura-ai/gh-issue-driven",
-      "repository": "https://github.com/kagura-ai/gh-issue-driven"
+      "homepage": "https://github.com/JFK/gh-issue-driven",
+      "repository": "https://github.com/JFK/gh-issue-driven"
     }
   ]
 }

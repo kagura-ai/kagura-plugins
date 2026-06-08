@@ -15,7 +15,7 @@ plugin keeps a single canonical source.
 ┌─ Tier 2 · Harness ── gh-issue-driven · kagura-engineer
 │     multi-phase · stateful/resumable · drives loops · creates PRs · HITL gates · costly
 │        consumes ↓
-├─ Tier 1 · Tools ──── kagura-c-suite · kagura-phd-panel · kagura-code-reviewer · kagura-planner
+├─ Tier 1 · Tools ──── claude-c-suite · claude-phd-panel · kagura-code-reviewer · kagura-planner
 │     single-purpose · cheap · safe · ~stateless: invoke → result
 │        grounded ↓
 └─ Substrate ───────── kagura-memory  (Memory Cloud)
@@ -50,8 +50,8 @@ This is the connective tissue — most other plugins are more useful with memory
 |---|---|---|
 | **kagura-code-reviewer** | `/kagura-code-reviewer:…` | Cost-free, Ollama-first code review — multi-angle finders, adversarial verify, structured verdict. |
 | **kagura-planner** | `/kagura-planner:plan` | Memory-grounded PLAN layer. Thin wrapper over the `kagura-planner` CLI (config discovery → `doctor` → `plan`). |
-| **kagura-c-suite** | `/kagura-c-suite:ask` · `:ceo` · `:cto` · … | Executive-team review lenses for any codebase. `ask` routes to the single best CxO; `ceo` synthesizes across roles. |
-| **kagura-phd-panel** | `/kagura-phd-panel:cs` · `:db` · `:sec` · … | PhD-level deep technical critique (CS, DB, Distributed Systems, Data Science, PL, Security, Statistics). |
+| **claude-c-suite** | `/claude-c-suite:ask` · `:ceo` · `:cto` · … | Executive-team review lenses for any codebase. `ask` routes to the single best CxO; `ceo` synthesizes across roles. |
+| **claude-phd-panel** | `/claude-phd-panel:cs` · `:db` · `:sec` · … | PhD-level deep technical critique (CS, DB, Distributed Systems, Data Science, PL, Security, Statistics). |
 
 ## Tier 2 — Harnesses (multi-phase · stateful · costly)
 
@@ -64,15 +64,25 @@ This is the connective tissue — most other plugins are more useful with memory
 | **kagura-engineer** | `/kagura-engineer:run` · `:review` · `:goal` | Autonomous coding loop over Claude Code + Kagura Memory. Drives a task/issue to a PR. |
 | **gh-issue-driven** | `/gh-issue-driven:start` · `:ship` · `:goal` · … | Drives GitHub issues to PRs (start → implement → ship → review) with gates and HITL. |
 
-## Brand & canonical source
+## Brand & ownership
 
-All plugins are first-party (Kagura AI / JFK) and **kagura-ai is the single canonical
-source**. Former JFK-personal plugins (`claude-c-suite`, `claude-phd-panel`,
-`gh-issue-driven`) are migrating to `kagura-ai`; the JFK repos are then frozen and archived.
-As part of the move, `claude-c-suite → kagura-c-suite` and `claude-phd-panel →
-kagura-phd-panel` (the invocation namespace is `<plugin>:<command>`, so the marketplace name
-never appears — no "kagura" doubling). Old `~/.claude/claude-*.json` configs keep working
-via fallback.
+All plugins are first-party. The `kagura-*` tools live under the **kagura-ai** org;
+`claude-c-suite`, `claude-phd-panel`, and `gh-issue-driven` are currently **JFK-maintained**
+(`github.com/JFK/...`) and the marketplace references them there — `reference-don't-vendor`
+works regardless of which org hosts the source, so these install today exactly like the rest.
+
+**Migration to kagura-ai is deferred, not cancelled.** It is treated as two independent steps:
+
+1. **Ownership move** (JFK → kagura-ai org) — cheap, reversible.
+2. **Prefix rename** (`claude-c-suite → kagura-c-suite`, `claude-phd-panel → kagura-phd-panel`)
+   — a breaking namespace change plus a config-path migration, and the expensive part.
+
+Both deliver brand coherence but **zero user-facing functionality**, so they are gated on an
+external trigger (public launch / external contributors), not a self-imposed deadline. Until
+then, JFK-maintained is the supported state. Tracked in
+[JFK/claude-c-suite-plugin#3](https://github.com/JFK/claude-c-suite-plugin/issues/3),
+[JFK/claude-phd-panel-plugin#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5),
+[JFK/gh-issue-driven#85](https://github.com/JFK/gh-issue-driven/issues/85).
 
 ## Rollout status
 
@@ -80,14 +90,14 @@ via fallback.
 |---|---|---|
 | kagura-memory | Substrate | ✅ live (`kagura-ai/memory-cloud`) |
 | kagura-code-reviewer | Tool | ✅ live (`kagura-ai/kagura-code-reviewer`) |
-| kagura-planner | Tool | 🚧 plugin in preparation in `kagura-ai/kagura-planner` |
-| kagura-engineer | Harness | 🚧 plugin in preparation — [kagura-ai/kagura-engineer#28](https://github.com/kagura-ai/kagura-engineer/issues/28) |
-| kagura-c-suite | Tool | 🚧 migrating from `JFK/claude-c-suite-plugin` ([#3](https://github.com/JFK/claude-c-suite-plugin/issues/3)) |
-| kagura-phd-panel | Tool | 🚧 migrating from `JFK/claude-phd-panel-plugin` ([#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5)) |
-| gh-issue-driven | Harness | 🚧 migrating from `JFK/gh-issue-driven` ([#85](https://github.com/JFK/gh-issue-driven/issues/85)) |
+| kagura-engineer | Harness | ✅ live (`kagura-ai/kagura-engineer`) — [#28](https://github.com/kagura-ai/kagura-engineer/issues/28) merged |
+| claude-c-suite | Tool | ✅ live (`JFK/claude-c-suite-plugin`) — migration deferred ([#3](https://github.com/JFK/claude-c-suite-plugin/issues/3)) |
+| claude-phd-panel | Tool | ✅ live (`JFK/claude-phd-panel-plugin`) — migration deferred ([#5](https://github.com/JFK/claude-phd-panel-plugin/issues/5)) |
+| gh-issue-driven | Harness | ✅ live (`JFK/gh-issue-driven`) — migration deferred ([#85](https://github.com/JFK/gh-issue-driven/issues/85)) |
+| kagura-planner | Tool | 🚧 plugin in preparation in `kagura-ai/kagura-planner` (separate session) |
 
-Entries marked 🚧 reference their target `kagura-ai` repo; installing them succeeds once that
-repo's plugin lands. The catalog listing itself is unaffected in the meantime.
+Only `kagura-planner` is 🚧 — its entry references the kagura-ai repo and installs once that
+repo's plugin lands. Everything else installs today.
 
 ### Keeping this in sync
 

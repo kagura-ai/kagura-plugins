@@ -7,6 +7,28 @@ empty `~/works/kagura-skills`)
 
 ---
 
+## 0. Decision update (2026-06-08, post-`/ceo`)
+
+> This block **supersedes** any conflicting statement below (notably §4.1 and §5).
+> A PM × CMO × CTO synthesis (`/claude-c-suite:ceo`) concluded that the JFK→kagura-ai
+> migration delivers **zero user-facing value** and that `reference-don't-vendor` works
+> regardless of which org hosts a plugin. Therefore:
+>
+> - **JFK-maintained is the supported state for now.** `marketplace.json` references the
+>   real `JFK/...` repos for `claude-c-suite`, `claude-phd-panel`, `gh-issue-driven` (they
+>   install today). The `kagura-*` tools stay under kagura-ai.
+> - **Migration is split into two independent steps and deferred:**
+>   1. *Ownership move* (JFK → kagura-ai org) — cheap, reversible.
+>   2. *Prefix rename* (`claude-c-suite → kagura-c-suite`, `claude-phd-panel →
+>      kagura-phd-panel`) — breaking namespace + config-path migration; the expensive part.
+> - **Trigger to execute:** an external launch / external contributors — not a self-imposed
+>   deadline. Until then both steps stay frozen. Issues #3 / #5 / #85 remain open as deferred.
+> - The earlier "rename now because it's the cheapest moment" reasoning only held *if*
+>   migrating anyway; with migration itself deferred, the breaking rename is decoupled and
+>   not done.
+
+---
+
 ## 1. Goal
 
 Make the **Kagura Memory Cloud ecosystem comfortable to adopt and use** by giving it a
@@ -78,6 +100,9 @@ Tier-2 Harness if it later drives multi-stage plan→engineer orchestration.
 
 ### 4.1 Plugin naming / namespace policy
 
+> **⚠️ Superseded by §0 (2026-06-08): the rename below is DEFERRED, not done now.** The
+> namespace facts remain accurate; the "rename during migration" timing does not.
+
 **Invocation namespace is `<plugin-name>:<command>`, not `<marketplace>:<plugin>`.** The
 marketplace name (`kagura-plugins`) never appears at call time. Evidence: marketplace
 `kagura-memory-cloud` ships plugin `kagura-memory`, invoked as `/kagura-memory:recall` — the
@@ -103,6 +128,10 @@ plugin reads the new `~/.claude/kagura-*.json` and **falls back to the old `clau
 for backward compatibility.
 
 ## 5. Canonical-source policy (JFK → kagura-ai)
+
+> **⚠️ Superseded by §0 (2026-06-08): JFK plugins are NOT frozen/archived now — they remain
+> the supported, marketplace-referenced source until the migration trigger fires.** The
+> end-state below (kagura-ai canonical) is the eventual target, deferred.
 
 - **kagura-ai is the single canonical source** for every plugin going forward.
 - JFK personal versions (`claude-c-suite`, `gh-issue-driven`, `claude-phd-panel`):

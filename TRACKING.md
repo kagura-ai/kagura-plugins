@@ -4,36 +4,42 @@ This file is the single place to see how the umbrella marketplace becomes fully 
 Each plugin's *implementation* is owned by its own repo/issue (linked below); this file
 only tracks **dependency order** and the **go-live checklist** for the marketplace.
 
-## Dependency order
+> **Migration deferred (2026-06-08, post-`/ceo`).** A PM × CMO × CTO synthesis concluded the
+> JFK→kagura-ai migration delivers zero user-facing value, and `reference-don't-vendor` works
+> regardless of host org. So JFK-maintained plugins are referenced at their real `JFK/...`
+> repos and **install today**. Migration (ownership move + the breaking `claude-* → kagura-*`
+> rename, two independent steps) is **frozen until an external-launch trigger**. Issues
+> #3 / #5 / #85 stay open as deferred — do **not** archive the JFK repos meanwhile.
 
-1. **Live already:** `kagura-memory` (kagura-ai/memory-cloud), `kagura-code-reviewer`
-   (kagura-ai/kagura-code-reviewer). No action.
-2. **Add thin skill in own repo** (makes the reference resolvable):
-   - `kagura-planner` — separate kagura-planner session
-   - `kagura-engineer` — kagura-ai/kagura-engineer#28
-3. **Migrate JFK → kagura-ai** (create repo, rebrand, deprecate, archive):
-   - `kagura-c-suite` ← JFK/claude-c-suite-plugin#3 (rename + config fallback)
-   - `kagura-phd-panel` ← JFK/claude-phd-panel-plugin#5 (rename + config fallback)
-   - `gh-issue-driven` ← JFK/gh-issue-driven#85 (name kept)
-4. **Per plugin, on landing:** run the go-live checklist below, flip README rollout 🚧→✅.
-5. **Decommission:** archive the 3 JFK repos after their kagura-ai counterparts verify.
+## Current state
+
+Everything installs now except `kagura-planner` (plugin still in preparation in a separate
+session). No action is required to keep the marketplace working.
 
 ## Per-plugin status
 
-| Plugin | Tier | Source repo | Issue | Status |
+| Plugin | Tier | Source repo (referenced) | Issue | Status |
 |---|---|---|---|---|
 | kagura-memory | substrate | kagura-ai/memory-cloud | — | ✅ live |
 | kagura-code-reviewer | tool | kagura-ai/kagura-code-reviewer | — | ✅ live |
+| kagura-engineer | harness | kagura-ai/kagura-engineer | #28 | ✅ live (PR #30 merged) |
+| claude-c-suite | tool | JFK/claude-c-suite-plugin | #3 | ✅ live · migration deferred |
+| claude-phd-panel | tool | JFK/claude-phd-panel-plugin | #5 | ✅ live · migration deferred |
+| gh-issue-driven | harness | JFK/gh-issue-driven | #85 | ✅ live · migration deferred |
 | kagura-planner | tool | kagura-ai/kagura-planner | (planner session) | 🚧 pending |
-| kagura-engineer | harness | kagura-ai/kagura-engineer | #28 | 🚧 pending |
-| kagura-c-suite | tool | kagura-ai/kagura-c-suite | JFK c-suite #3 | 🚧 pending |
-| kagura-phd-panel | tool | kagura-ai/kagura-phd-panel | JFK phd #5 | 🚧 pending |
-| gh-issue-driven | harness | kagura-ai/gh-issue-driven | JFK ghid #85 | 🚧 pending |
 
-## Go-live checklist (run when a pending plugin's repo lands)
+## Go-live checklist for `kagura-planner` (when its plugin lands)
 
-- [ ] `/plugin install <name>@kagura-plugins` succeeds in a clean Claude Code session
-- [ ] The plugin's namespace resolves (e.g. `/kagura-c-suite:ask`)
-- [ ] Flip this file's status and `README.md` rollout row 🚧 → ✅
-- [ ] Commit: `docs: <name> live in kagura-plugins`
-- [ ] If it was a JFK migration, confirm the JFK repo carries its deprecation notice, then archive it
+- [ ] `/plugin install kagura-planner@kagura-plugins` succeeds in a clean Claude Code session
+- [ ] The namespace resolves (`/kagura-planner:plan`)
+- [ ] Flip this file's status and the `README.md` rollout row 🚧 → ✅
+- [ ] Commit: `docs: kagura-planner live in kagura-plugins`
+
+## When the migration trigger fires (deferred)
+
+Two independent steps, smallest-blast-radius first:
+
+1. **#85 gh-issue-driven** — ownership move only (no rename). Cheapest.
+2. **#3 / #5** — ownership move **+** breaking `claude-* → kagura-*` rename + config-path
+   fallback (`~/.claude/kagura-*.json`, falling back to `claude-*.json`). Update this
+   marketplace's `source` + `name` for those entries, then archive the JFK repos after verify.
