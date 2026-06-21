@@ -15,7 +15,7 @@ plugin keeps a single canonical source.
 ┌─ Tier 2 · Harness ── gh-issue-driven · kagura-engineer
 │     multi-phase · stateful/resumable · drives loops · creates PRs · HITL gates · costly
 │        consumes ↓
-├─ Tier 1 · Tools ──── claude-c-suite · claude-phd-panel · kagura-code-reviewer · kagura-planner
+├─ Tier 1 · Tools ──── claude-c-suite · claude-phd-panel · kagura-cli · kagura-code-reviewer · kagura-planner
 │     single-purpose · cheap · safe · ~stateless: invoke → result
 │        grounded ↓
 └─ Substrate ───────── kagura-memory  (Memory Cloud)
@@ -48,6 +48,7 @@ This is the connective tissue — most other plugins are more useful with memory
 
 | Plugin | Invoke | What it's for |
 |---|---|---|
+| **kagura-cli** | `/kagura-cli:setup` · `:auth` · `:doctor` · `:ingest` · `:files` · `:resource` | Thin skills over the Kagura Memory **CLI** (`kagura`) — auth/setup/doctor, document ingestion, resource tokens, R2 file uploads. The substrate's operational companion (distinct from the `kagura-memory` MCP plugin). |
 | **kagura-code-reviewer** | `/kagura-code-reviewer:…` | Cost-free, Ollama-first code review — multi-angle finders, adversarial verify, structured verdict. |
 | **kagura-planner** | `/kagura-planner:plan` | Memory-grounded PLAN layer. Thin wrapper over the `kagura-planner` CLI (config discovery → `doctor` → `plan`). |
 | **claude-c-suite** | `/claude-c-suite:ask` · `:ceo` · `:cto` · … | Executive-team review lenses for any codebase. `ask` routes to the single best CxO; `ceo` synthesizes across roles. |
@@ -87,6 +88,7 @@ then, JFK-maintained is the supported state.
 | Plugin | Tier | Status |
 |---|---|---|
 | kagura-memory | Substrate | ✅ live (`kagura-ai/memory-cloud`) |
+| kagura-cli | Tool | ✅ live (`kagura-ai/kagura-memory-python-sdk`) |
 | kagura-code-reviewer | Tool | ✅ live (`kagura-ai/kagura-code-reviewer`) |
 | kagura-engineer | Harness | ✅ live (`kagura-ai/kagura-engineer`) |
 | claude-c-suite | Tool | ✅ live (`JFK/claude-c-suite-plugin`) — migration deferred |
@@ -94,4 +96,14 @@ then, JFK-maintained is the supported state.
 | gh-issue-driven | Harness | ✅ live (`JFK/gh-issue-driven`) — migration deferred |
 | kagura-planner | Tool | ✅ live (`kagura-ai/kagura-planner`) |
 
-All seven plugins install today.
+All eight plugins install today.
+
+## Related — not Claude Code plugins
+
+Some Kagura components are **runnable products, not `/plugin install`-able plugins**, so they
+are intentionally *not* listed in the marketplace above. They ship no `.claude-plugin/`
+manifest; you install and run them from their own repos.
+
+| Component | What it is |
+|---|---|
+| **kagura-agent** | Memory-backed autonomous agent on the Claude Agent SDK / kagura-brain — Docker **security membrane**, per-task **credential leasing**, capability graduation, and a Slack/Discord cockpit. Runnable, Apache-2.0. Run from [`kagura-ai/kagura-agent`](https://github.com/kagura-ai/kagura-agent), **not** via `/plugin install`. |
