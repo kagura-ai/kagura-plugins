@@ -21,6 +21,15 @@
       "repository": "https://github.com/kagura-ai/memory-cloud"
     },
     {
+      "name": "kagura-cli",
+      "source": { "source": "github", "repo": "kagura-ai/kagura-memory-python-sdk" },
+      "description": "Tool · Thin Claude Code skills over the Kagura Memory CLI (kagura) — auth, doctor, setup, document ingestion, resource tokens, and R2 file uploads. The operational companion to the kagura-memory substrate.",
+      "category": "productivity",
+      "keywords": ["kagura", "tool", "memory", "cli", "ingestion"],
+      "homepage": "https://github.com/kagura-ai/kagura-memory-python-sdk",
+      "repository": "https://github.com/kagura-ai/kagura-memory-python-sdk"
+    },
+    {
       "name": "kagura-code-reviewer",
       "source": { "source": "github", "repo": "kagura-ai/kagura-code-reviewer" },
       "description": "Tool · Cost-free, Ollama-first code review — multi-angle finders, adversarial verify, structured verdict.",
