@@ -28,6 +28,8 @@ Read it bottom-up: **memory grounds everything**, **tools** give you a single sh
 
 ## Install
 
+### Claude Code
+
 ```text
 /plugin marketplace add kagura-ai/kagura-plugins
 /plugin install kagura-memory@kagura-plugins        # start with the substrate
@@ -35,6 +37,37 @@ Read it bottom-up: **memory grounds everything**, **tools** give you a single sh
 ```
 
 Update the catalog later with `/plugin marketplace update`.
+
+### Codex / Desktop app
+
+The Codex catalog at `.agents/plugins/marketplace.json` currently includes only
+**kagura-memory**. It references the existing Codex package at
+`kagura-ai/memory-cloud/plugins/kagura-memory` on `main`; plugin files remain in
+their source repository. The eight-plugin catalog above is for Claude Code.
+
+In the Desktop app, open **Plugins → Add → Add plugin marketplace**:
+
+| Field | Value |
+|---|---|
+| Source | `kagura-ai/kagura-plugins` |
+| Git ref | `main` (or the branch containing the Codex catalog) |
+| Sparse paths | Leave empty |
+
+The selected Git ref must contain `.agents/plugins/marketplace.json`. To try an
+unpublished local checkout, use its absolute directory path as the source instead
+and leave Git ref and sparse paths empty.
+
+Then select **Kagura Plugins** and install **kagura-memory**. The equivalent CLI
+command to register the marketplace is:
+
+```shell
+codex plugin marketplace add kagura-ai/kagura-plugins --ref main
+```
+
+This package supplies memory workflow skills; it does **not** bundle the MCP
+connection or credentials. Configure your Kagura Memory MCP connection separately.
+After installing, ask Codex to "show the Kagura Memory guide" for setup help or
+"smoke test Kagura Memory" to verify the connection.
 
 ## Substrate — start here
 
